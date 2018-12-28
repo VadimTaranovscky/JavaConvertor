@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<?import ru.diti.converter.enums.Currency?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<GridPane fx:controller="ru.diti.converter.controller.ConverterController"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10"
+          stylesheets="../css/main.css">
+    <padding>
+        <Insets top="25" right="25" bottom="10" left="25"/>
+    </padding>
+
+    <Text id="welcome-text" text="Welcome"
+          GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.columnSpan="4"
+          GridPane.halignment="CENTER"/>
+
+    <!--<Label text="From" GridPane.columnIndex="0" GridPane.rowIndex="1"/>-->
+    <ComboBox fx:id="currencyFrom"
+              GridPane.columnIndex="1" GridPane.rowIndex="1" minWidth="150">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <Currency fx:value="USD"/>
+                <Currency fx:value="EUR"/>
+                <Currency fx:value="RUR"/>
+                <Currency fx:value="MXN"/>
+            </FXCollections>
+        </items>
+        <value>
+            <Currency fx:value="USD"/>
+        </value>
+    </ComboBox>
+
+    <!--<Label text="To" GridPane.columnIndex="3" GridPane.rowIndex="1"/>-->
+    <ComboBox fx:id="currencyTo"
+              GridPane.columnIndex="4" GridPane.rowIndex="1" minWidth="150">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <Currency fx:value="USD"/>
+                <Currency fx:value="EUR"/>
+                <Currency fx:value="RUR"/>
+                <Currency fx:value="MXN"/>
+            </FXCollections>
+        </items>
+        <value>
+            <Currency fx:value="RUR"/>
+        </value>
+    </ComboBox>
+
+    <!-- <Label text="Value" GridPane.columnIndex="0" GridPane.rowIndex="2"/>-->
+    <TextField id="moneyValue" fx:id="actiontarget"
+               onAction="#handleConvertAction"
+               GridPane.columnIndex="4" GridPane.rowIndex="2" minWidth="150"/>
+    <TextField id="moneyValue" fx:id="money"
+               onAction="#handleConvertAction"
+               GridPane.columnIndex="1" GridPane.rowIndex="2" prefWidth="100"/>
+    <Button id="Arrows" onAction="#handleReverseButtonAction" GridPane.columnIndex="2" GridPane.rowIndex="1">
+        <graphic>
+            <ImageView fitWidth="16.0" fitHeight="16.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../images/arrows.png"/>
+                </image>
+            </ImageView>
+        </graphic>
+    </Button>
+    <ImageView fx:id="currencyFromImage" fitHeight="24.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
+        <image>
+            <Image url="@../images/dollar.png"/>
+        </image>
+    </ImageView>
+    <ImageView fx:id="currencyFromImagecopy" fitHeight="24.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="2">
+        <image>
+            <Image url="@../images/Rub.png"/>
+        </image>
+    </ImageView>
+    <!--<Label text="Result" GridPane.columnIndex="0" GridPane.rowIndex="3"/>-->
+
+    <HBox spacing="10" alignment="bottom_right"
+          GridPane.columnIndex="4" GridPane.rowIndex="4">
+        <!-- <Button text="Convert" minWidth="80"
+                 onAction="#handleConvertAction"/>-->
+    </HBox>
+
+    <!-- <Text fx:id="actiontarget"
+            GridPane.columnIndex="4"
+            GridPane.halignment="LEFT" GridPane.rowIndex="3"/>-->
+</GridPane>
